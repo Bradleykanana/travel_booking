@@ -1,0 +1,498 @@
+{% extends 'base.html' %}  
+{% load static %}
+{% block title %}About Us | Nordic Trails{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us | Nordic Trails</title>
+  <link rel="icon" href="images/logon4.png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/homepagebridge.css' %}">
+  <style>
+    body {
+      margin: 0;
+      background-color: #0b1622;
+      color: #eaeaea;
+      font-family: 'Open Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Parallax Hero Banner */
+    .abtbanner {
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(10, 20, 30, 0.7), rgba(10, 20, 30, 0.8)), url('{% static "images/lofoten3.jpg" %}') no-repeat center center;
+      background-size: cover;
+      color: #fff;
+      padding: 120px 20px 100px;
+      overflow: hidden;
+    }
+    @media (max-width: 900px) {
+      .abtbanner {
+        background-attachment: scroll;
+      }
+      .abtext::before {
+        display: none;
+      }
+      .abtbanner h1, .abtbanner p {
+        text-shadow: none;
+        animation: none;
+      }
+    }
+    .abtbanner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(120deg, rgba(13,27,42,0.7) 60%, rgba(244,233,216,0.1) 100%);
+      z-index: 1;
+    }
+    .abtext {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .abtext::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 10px solid #e0cba8;
+      box-shadow: 0 0 40px 10px #e0cba8, 0 0 0 20px rgba(13,27,42,0.15), 0 0 30px 15px #58ccff99;
+      opacity: 0.45;
+      filter: blur(0.5px);
+      z-index: -1;
+      animation: glowcircle 2.5s infinite alternate;
+    }
+    @keyframes glowcircle {
+      0% { box-shadow: 0 0 40px 10px #e0cba8, 0 0 0 20px rgba(13,27,42,0.15), 0 0 30px 15px #58ccff99; }
+      100% { box-shadow: 0 0 60px 20px #e0cba8, 0 0 0 30px rgba(13,27,42,0.15), 0 0 60px 30px #58ccffcc; }
+    }
+    .abtbanner h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.2rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 16px #e0cba8, 0 0 8px #58ccff, 0 2px 16px #1b263b;
+      animation: glowtext 2.5s infinite alternate;
+    }
+    .abtbanner p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      color: #d0e9ff;
+      text-shadow: 0 0 8px #58ccff, 0 1px 6px #1b263b;
+      animation: glowtext 2.5s infinite alternate;
+    }
+    @keyframes glowtext {
+      0% { text-shadow: 0 0 16px #e0cba8, 0 0 8px #58ccff, 0 2px 16px #1b263b; }
+      100% { text-shadow: 0 0 32px #e0cba8, 0 0 16px #58ccff, 0 4px 32px #1b263b; }
+    }
+
+    /* Section Layout */
+    section {
+      padding: 60px 8%;
+      line-height: 1.7;
+    }
+    h2 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #e0cba8;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    p {
+      color: #cfd9e5;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Core About Section */
+    .about-core {
+      background: rgba(20, 36, 58, 0.6);
+      border-radius: 16px;
+      padding: 60px 5%;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+    }
+    #pb {
+      font-family: 'Cinzel Decorative', serif;
+      text-align: center;
+      font-size: 1.25rem;
+      color: #e0cba8;
+      margin-top: 1.5rem;
+    }
+
+    /* Mission Section */
+    .mission-callout {
+      background: linear-gradient(120deg, #0d1929, #162b44);
+      border-left: 4px solid #58ccff;
+      border-radius: 12px;
+      padding: 50px 5%;
+      color: #dce9f8;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+    .mission-callout h2 {
+      margin-bottom: 1rem;
+    }
+    .pintro {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #cfe4f5;
+      margin-bottom: 3rem;
+    }
+
+    /* Testimonials */
+    .flag-callout {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      color: #d9e8f2;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+    }
+    .flag-callout strong {
+      color: #e0cba8;
+    }
+
+    /* Table Section */
+    .abt-table-glow {
+      margin: 4rem auto;
+      max-width: 900px;
+      background: rgba(13, 27, 42, 0.85);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    }
+    .abt-table-glow h2 {
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #f0f6ff;
+    }
+    th, td {
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    th {
+      background: #162b44;
+      color: #e0cba8;
+      font-family: 'Cinzel Decorative', serif;
+      letter-spacing: 0.5px;
+    }
+    tr:hover {
+      background: rgba(88, 204, 255, 0.1);
+    }
+
+    /* Gallery */
+    .abt-gallery-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .abt-gallery-row img {
+      width: 45%;
+      border-radius: 16px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+      transition: 0.3s ease;
+    }
+    .abt-gallery-row img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Promise Section */
+    .closer-dark {
+      background: linear-gradient(120deg, #101e31, #142f46);
+      text-align: center;
+      color: #dde9f6;
+      padding: 60px 8%;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+    }
+    .closer-dark h2 {
+      color: #e0cba8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* CTA Box */
+    .glow-cta {
+      text-align: center;
+      background: radial-gradient(circle at center, #58ccff40, #0b162280);
+      padding: 3rem 2rem;
+      margin: 4rem 8%;
+      border-radius: 20px;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+    }
+    .glow-cta h3 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #e0cba8;
+      font-size: 1.8rem;
+    }
+    .glow-cta a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background: #58ccff;
+      color: #0b1622;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    .glow-cta a:hover {
+      background: #38b6e8;
+      transform: translateY(-2px);
+    }
+
+    /* Footer Styles Inline */
+    .site-footer {
+      background: #08121d;
+      color: #bcd0e4;
+      padding: 2.5rem 8% 1.2rem 8%;
+      font-size: 1rem;
+      border-top: 2px solid #58ccff30;
+      margin-top: 4rem;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2.5rem;
+      text-align: left;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-logo h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.2rem;
+      color: #e0cba8;
+      margin-bottom: 0.3rem;
+    }
+    .footer-logo .tagline {
+      font-size: 1.1rem;
+      color: #58ccff;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links h3,
+    .footer-contact h3,
+    .footer-social h3 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #e0cba8;
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links ul li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-links ul li a {
+      color: #bcd0e4;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .footer-links ul li a:hover {
+      color: #58ccff;
+      text-decoration: underline;
+    }
+    .footer-contact p {
+      margin: 0.2rem 0;
+      color: #bcd0e4;
+      font-size: 0.98rem;
+    }
+    .footer-social .social-icons {
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+    .footer-social .social-icons img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px #58ccff44;
+      transition: transform 0.2s;
+    }
+    .footer-social .social-icons img:hover {
+      transform: scale(1.15);
+      box-shadow: 0 4px 16px #58ccff99;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #9db3ca;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  {% comment %} <div class="navigation-wrapper">
+    <div class="address_wrapper">
+      <img src="images/ns6.png" alt="tagline">
+    </div>
+    <div class="left-column">
+      <div class="banner-image">
+        <img src="images/logon4.png" alt="logo">
+      </div>
+      <div class="linkwrapper">
+        <a class="nav-link" href="nordictrailshome.html">Home</a>
+        <a class="nav-link" href="tripdetails.html">Upcoming Tours</a>
+        <a class="nav-link" href="aboutus.html">About Us</a>
+        <a class="nav-link" href="signup.php" target="_blank">Signup</a>
+        <a class="nav-link" href="login.php" target="_blank">Login</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="searchbar">
+        <input type="text" id="searchbar" placeholder="Search...">
+        <input type="submit" id="srch" value="🔍">
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="abtbanner">
+      <div class="abtext">
+        <h1>NORDIC TRAILS</h1>
+        <p>Wonder. Wander. Explore.</p>
+      </div>
+    </section>
+
+    <section class="about-core">
+      <h2>Who We Are</h2>
+      <p><strong>Nordic Trails</strong> isn't your average travel company — we're a movement. A call to the wild. A bridge between ancient legends and modern explorers.</p>
+      <p>We craft journeys through Norway and beyond that stir the soul: glacier hikes, Viking feasts, fjord kayaking, longship reenactments — all tied together with real culture and deep local roots.</p>
+      <p>Our team? Part historians, part adventurers, part storytellers. And yes — a little obsessed with Norse myths, mead halls, and mountain air.</p>
+      <p>If you're chasing more than just a vacation — if you want to feel the wind off a fjord and think, “This is what legends are made of” — then welcome home.</p>
+      <p id="pb"><strong>Wander far. Wonder deeply. Explore endlessly.<br>The North remembers — and so will you.</strong></p>
+    </section>
+
+    <section class="mission-callout">
+      <div class="missioncontent">
+        <h2>Our Mission</h2>
+      </div>
+    </section>
+
+    <div class="pintro">
+      <p>To create immersive travel experiences that honor Viking history, support local communities, and bring travelers closer to the Nordic spirit. We aim to inspire meaningful journeys guided by culture, nature, and a deep respect for the lands we explore.</p>
+    </div>
+
+    <div class="abt-gallery-row">
+      <img src="{% static 'images/group1.jpeg' %}" alt="">
+      <img src="{% static 'images/group2.jpeg' %}" alt="">
+    </div>
+
+    <div class="flag-callout flag-right">
+      <p>"Nordic Trails beautifully captures the spirit of Viking history with modern flair. It's not just trips—it's cultural revival."<br><strong>Erik Halvorsen</strong> | <i>Nordic Heritage Institute</i></p>
+    </div>
+
+    <div class="flag-callout flag-left">
+      <p>"Nordic Trails is redefining cultural exploration with authentic Viking experiences and unbeatable value."<br><strong>Astrid Sörensen</strong> | <i>Skaldra Horizons Travel Co.</i></p>
+    </div>
+
+    <div class="flag-callout flag-right">
+      <p>"Their efforts to promote Nordic heritage through youth-focused trips are truly commendable."<br><strong>Jonas Eriksen</strong> | <i>UNESCO</i></p>
+    </div>
+
+    <div class="flag-callout flag-left">
+      <p>"They're not just selling a trip — they’re building bridges to the past."<br><strong>Ingrid Dahl</strong> | <i>Global Explorer Magazine</i></p>
+    </div>
+
+    <div class="abt-table-glow">
+      <h2>🔥 Viking Trail Highlights</h2>
+      <table>
+        <tr><th>Experience</th><th>Location</th><th>Epic Moments</th></tr>
+        <tr><td>Fjord Kayaking</td><td>West Norway</td><td>Echoes, still water, ancient cliffs</td></tr>
+        <tr><td>Norse Feasting</td><td>Viking Hall</td><td>Mead, fire pits, ghost stories</td></tr>
+        <tr><td>Reenactments</td><td>Iceland + Denmark</td><td>Sword drills, rowing longships</td></tr>
+        <tr><td>Hiking Ice & Fire</td><td>Þingvellir</td><td>Glaciers, lava plains, lore</td></tr>
+      </table>
+    </div>
+
+    <div class="abt-gallery-row">
+      <img src="{% static 'images/hotel2.jpg' %}" alt="">
+      <img src="{% static 'images/hike1.jpg' %}" alt="">
+    </div>
+
+    <section class="closer-dark">
+      <h2>What We Promise</h2>
+      <p>Small groups. Local guides. No gimmicks. We take you where the myths were made, with real people, real places, and unforgettable moments.</p>
+      <p><i>Your story starts here. You in?</i></p>
+    </section>
+
+    <div class="glow-cta">
+      <h3>Become a Trail Member</h3>
+      <p><a href="{% url 'signup' %}">Start your saga →</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>Nordic Trails</h2>
+        <p class="tagline">Wander. Wonder. Explore.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="/users/dashboard/">Dashboard</a></li>
+          <li><a href="/destinations/">Destinations</a></li>
+          <li><a href="/mybookings/">My Bookings</a></li>
+          <li><a href="/users/profile/">Profile</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Email: support@nordictrails.com</p>
+        <p>Phone: +47 123 456 789</p>
+        <p>Location: Asgard Plaza, Norway</p>
+      </div>
+      <div class="footer-social">
+        <h3>Join the Saga</h3>
+        <div class="social-icons">
+          <a href="#"><img src="{% static 'images/facebook.jpg' %}" alt="Facebook"></a>
+          <a href="#"><img src="{% static 'images/instagram.jpg' %}" alt="Instagram"></a>
+          <a href="#"><img src="{% static 'images/twitter.jpg' %}" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>⚔️ Embrace the Saga. Your Viking journey begins here.</p>
+      <p>&copy; 2025 Nordic Trails. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+{% endblock %}

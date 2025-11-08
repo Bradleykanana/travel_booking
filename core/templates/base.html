@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Nordic Trails{% endblock %}</title>
+        <link rel="icon" href="{% static 'images/logon4.png' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+        <link rel="stylesheet" href="{% static 'css/homepagebridge.css' %}">
+        <link rel="stylesheet" href="{% static 'css/homegallery.css' %}">
+</head>
+<body>
+                                <div class="navigation-wrapper">
+                                        <div class="address_wrapper">
+                                                <img src="{% static 'images/ns6.png' %}" alt="tagline">
+                                        </div>
+                                        <div class="left-column">
+                                                <div class="banner-image">
+                                                        <img src="{% static 'images/logon4.png' %}" alt="logo">
+                                                </div>
+                                                <div class="linkwrapper">
+                                                        <a class="nav-link" href="/">Home</a>
+                                                        <a class="nav-link" href="/destinations/">Destinations</a>
+                                                        <a class="nav-link" href="/about/">About Us</a>
+                                                        <a class="nav-link" id="booking" href="/users/signup/">Signup Here</a>
+                                                        <a class="nav-link" id="booking" href="/users/login/">Login</a>
+                                                </div>
+                                        </div>
+                                        <div class="nav-right">
+                                                <div class="searchbar">
+                                                        <input type="text" id="searchbar" name="Search" placeholder="Search..." >
+                                                        <input type="submit" id="srch" name="🔍 " value="🔍" >
+                                                </div>
+                                        </div>
+                                </div>
+        <main>
+                {% block content %}{% endblock %}
+        </main>
+        {# Removed duplicate copyright footer #}
+</body>
+</html>
