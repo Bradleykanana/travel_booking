@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Reviews | Nordic Trails</title>
+  <link rel="icon" href="{% static 'images/logon4.png' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <style>
+    body { background: #101a2a; color: #f5f5f5; font-family: 'Montserrat', 'Cinzel Decorative', serif; margin: 0; }
+    .container { max-width: 900px; margin: 3rem auto; background: rgba(255,255,255,0.08); border-radius: 18px; box-shadow: 0 4px 32px #0007; padding: 2.5rem 2rem; }
+    .top-bar { display: flex; justify-content: flex-end; margin-bottom: 2rem; }
+    .top-bar a { color: #ffb07c; font-family: 'Cinzel Decorative', serif; font-size: 1.05rem; font-weight: 600; text-decoration: none; padding: 0.5rem 1.2rem; border-radius: 8px; border: 1.5px solid rgba(255,176,124,0.35); background: none; transition: box-shadow 0.2s, color 0.2s; text-shadow: 0 0 6px #fff3e0, 0 0 2px #ffd8b0; }
+    .top-bar a:hover { color: #58ccff; box-shadow: 0 0 10px 2px #58ccff88; }
+    .review-list { margin-top: 1.5rem; }
+    .review-card { background: rgba(16,33,51,0.93); border-radius: 12px; box-shadow: 0 2px 12px #0005; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1.2rem; }
+    .review-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid #ffb07c; }
+    .review-content { flex: 1; }
+    .review-user { font-family: 'Cinzel Decorative', serif; color: #ffb07c; font-size: 1.08rem; font-weight: 600; }
+    .review-date { font-size: 0.92rem; color: #b6d6f2; margin-left: 8px; }
+    .review-rating { color: #ffd700; font-size: 1.1rem; font-weight: bold; margin-right: 10px; }
+    .review-comment { margin-top: 0.5rem; color: #f5f5f5; font-size: 1.05rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <a href="{% url 'dashboard' %}">← Back to Dashboard</a>
+    </div>
+    <h1 style="text-align:center;color:#ffb07c;font-family:'Cinzel Decorative',serif;font-size:2.1rem;margin-bottom:2.2rem;">All Reviews</h1>
+    <div class="review-list">
+      {% for review in reviews %}
+      <div class="review-card">
+  <!-- Avatar removed -->
+        <div class="review-content">
+          <span class="review-user">{{ review.user.username }}</span>
+          <span class="review-date">{{ review.created_at|date:'M d, Y H:i' }}</span><br>
+          <span class="review-rating">{{ review.rating }}&#9733;</span>
+          <span class="review-destination">{{ review.destination }}</span>
+          <div class="review-comment">{{ review.comment }}</div>
+        </div>
+      </div>
+      {% empty %}
+      <p style="text-align:center;color:#ccc;font-style:italic;">No reviews yet. Be the first to share your experience!</p>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
