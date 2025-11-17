@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Destination Details | Nordic Trails{% endblock %}
+{% block content %}
+<div class="container" style="max-width:700px;margin:auto;background:rgba(13,27,42,0.93);padding:2.5rem 2rem 2rem 2rem;border-radius:18px;box-shadow:0 0 24px #000a;margin-top:2.5rem;">
+  <a href="{% url 'destination_list' %}" class="btn-primary" style="background:#e0cba8;color:#0d1b2a;padding:0.5rem 1.2rem;border-radius:8px;font-weight:bold;text-decoration:none;box-shadow:0 2px 8px #0002;">&larr; Back to Destinations</a>
+  <h1 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;margin-top:1rem;">{{ destination.name }}</h1>
+  {% if destination.image %}
+    <img src="{{ destination.image.url }}" alt="{{ destination.name }}" style="display:block;margin:2rem auto 1.5rem auto;max-width:100%;height:320px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px #0004;">
+  {% endif %}
+  <p style="color:#e0cba8;font-size:1.1rem;text-align:center;margin-bottom:2rem;">{{ destination.description }}</p>
+</div>
+{% endblock %}

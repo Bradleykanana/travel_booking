@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Destinations | Nordic Trails{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/homepagebridge.css' %}">
+
+<!-- Hero Parallax Section -->
+<div style="position:relative;height:490px;width:100%;margin-bottom:2.5rem;overflow:hidden;">
+  <div style="background:url('{% static 'images/lofoten3.jpg' %}') center center/cover no-repeat fixed;
+              position:absolute;top:0;left:0;width:100%;height:100%;filter:brightness(0.6);z-index:1;"></div>
+   <!-- Trail Member Promo Overlay -->
+   <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;">
+     <div style="background:rgba(20,36,58,0.72);padding:2.2rem 2.5rem;border-radius:18px;box-shadow:0 2px 16px #0007;max-width:520px;margin:auto;pointer-events:auto;">
+       <h3 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;font-size:2.1rem;margin-bottom:0.7rem;text-align:center;">Ready to journey beyond the brochure?</h3>
+       <p style="color:#b6d6f2;font-size:1.18rem;text-align:center;margin-bottom:0.7rem;">Become a <strong style="color:#58ccff;">Trail Member</strong> for early access to rare departures, seasonal feasts, and member-only Viking experiences.</p>
+       <p class="trail-member-cta" style="text-align:center;margin-top:1.1rem;">
+         <a href="{% url 'signup' %}" class="trail-link" style="background:#58ccff;color:#14243a;padding:0.7rem 1.6rem;border-radius:8px;font-weight:700;font-size:1.08rem;text-decoration:none;box-shadow:0 2px 8px #0003;">Join the Saga</a>
+       </p>
+     </div>
+   </div>
+<!-- Featured Accommodation Partners & Activities -->
+<div style="margin:3.5rem 0 2.5rem 0;">
+  <h2 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;margin-bottom:0.7rem;">Featured Accommodation Partners</h2>
+  <p style="text-align:center;color:#e0cba8;font-size:1.08rem;margin-bottom:2.2rem;max-width:700px;margin-left:auto;margin-right:auto;">
+    We partner with the best local hotels to make your Nordic journey unforgettable. Enjoy cozy stays and breathtaking views—all handpicked for you!
+  </p>
+  <div style="display:flex;overflow-x:auto;gap:2.2rem;padding-bottom:0.5rem;scrollbar-width:thin;">
+    <!-- Hotel 1 -->
+    <div style="min-width:260px;max-width:280px;background:#14243a;border-radius:16px;box-shadow:0 2px 12px #0005;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/hotel1.jpg' %}" alt="Aurora Lodge" style="width:100%;height:170px;object-fit:cover;border-radius:16px 16px 0 0;">
+      <div style="padding:1.1rem 1.2rem 1.2rem 1.2rem;">
+        <h3 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.5rem 0;">Aurora Lodge</h3>
+        <p style="color:#b6d6f2;font-size:1rem;">Nestled under the northern lights, this boutique hotel offers warm hospitality, spa retreats, and panoramic views of snowy forests.</p>
+      </div>
+    </div>
+    <!-- Hotel 2 -->
+    <div style="min-width:260px;max-width:280px;background:#14243a;border-radius:16px;box-shadow:0 2px 12px #0005;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/hotel2.jpg' %}" alt="Fjordside Retreat" style="width:100%;height:170px;object-fit:cover;border-radius:16px 16px 0 0;">
+      <div style="padding:1.1rem 1.2rem 1.2rem 1.2rem;">
+        <h3 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.5rem 0;">Fjordside Retreat</h3>
+        <p style="color:#b6d6f2;font-size:1rem;">Wake up to breathtaking fjord views, gourmet breakfasts, and easy access to hiking trails and local culture.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Activities Section -->
+<div style="margin:2.5rem 0 2.5rem 0;">
+  <h2 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;margin-bottom:0.7rem;">Signature Activities</h2>
+  <p style="text-align:center;color:#e0cba8;font-size:1.08rem;margin-bottom:2.2rem;max-width:700px;margin-left:auto;margin-right:auto;">
+    Our adventure partners offer the best of the Nordic outdoors. Join guided hikes, kayak through fjords, and explore ancient forests with local experts.
+  </p>
+  <div style="display:flex;overflow-x:auto;gap:2.2rem;padding-bottom:0.5rem;scrollbar-width:thin;">
+    <!-- Hiking Adventure -->
+    <div style="min-width:260px;max-width:280px;background:#14243a;border-radius:16px;box-shadow:0 2px 12px #0005;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/hike1.jpg' %}" alt="Mountain Hike" style="width:100%;height:170px;object-fit:cover;border-radius:16px 16px 0 0;">
+      <div style="padding:1.1rem 1.2rem 1.2rem 1.2rem;">
+        <h3 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.5rem 0;">Guided Mountain Hikes</h3>
+        <p style="color:#b6d6f2;font-size:1rem;">Join expert guides for scenic treks through Nordic peaks, with stops for photos, stories, and local treats.</p>
+      </div>
+    </div>
+    <!-- Kayak Adventure -->
+    <div style="min-width:260px;max-width:280px;background:#14243a;border-radius:16px;box-shadow:0 2px 12px #0005;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/kayak1.jpg' %}" alt="Kayak Fjord" style="width:100%;height:170px;object-fit:cover;border-radius:16px 16px 0 0;">
+      <div style="padding:1.1rem 1.2rem 1.2rem 1.2rem;">
+        <h3 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.5rem 0;">Fjord Kayaking</h3>
+        <p style="color:#b6d6f2;font-size:1rem;">Paddle through crystal-clear waters surrounded by towering cliffs and waterfalls—an adventure for all skill levels.</p>
+      </div>
+    </div>
+    <!-- Forest Walks -->
+    <div style="min-width:260px;max-width:280px;background:#14243a;border-radius:16px;box-shadow:0 2px 12px #0005;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/hike2.jpg' %}" alt="Forest Walk" style="width:100%;height:170px;object-fit:cover;border-radius:16px 16px 0 0;">
+      <div style="padding:1.1rem 1.2rem 1.2rem 1.2rem;">
+        <h3 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.5rem 0;">Forest Walks & Wildlife</h3>
+        <p style="color:#b6d6f2;font-size:1rem;">Explore ancient forests, spot wildlife, and enjoy peaceful moments in nature with our local partners.</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+    <h1 style="color:#fff;font-family:'Cinzel Decorative',serif;font-size:2.7rem;letter-spacing:2px;text-shadow:0 2px 16px #000b;margin-top:1.5rem;">Explore Nordic Destinations</h1>
+    <p style="color:#e0cba8;font-size:1.25rem;text-align:center;max-width:700px;margin:1.2rem auto 0 auto;text-shadow:0 2px 8px #000a;">
+      Discover breathtaking landscapes, vibrant cultures, and unforgettable adventures across the North. Each season brings new journeys—where will you go next?
+    </p>
+  </div>
+</div>
+
+
+  <!-- Section 1: Current Season Destinations -->
+  <h1 style="text-align:center;color:#000;font-family:'Cinzel Decorative',serif;letter-spacing:1px;font-weight:700;">Current Season: Nordic Destinations</h1>
+  <p style="text-align:center;color:#000;font-size:1.1rem;margin-bottom:2.5rem;">Choose your next adventure! Each destination features a parallax image and a floating panel with details.</p>
+
+  <!-- Modern Parallax Destination Panels -->
+  <div style="display:flex;flex-direction:column;gap:3.5rem;">
+    <!-- Norway -->
+    <div style="display:flex;align-items:stretch;min-height:260px;margin-bottom:0.5rem;">
+      <div style="flex:1;background:url('{% static 'images/norway.jpg' %}') center center/cover no-repeat;border-radius:16px 0 0 16px;min-width:220px;min-height:260px;"></div>
+      <div style="flex:2;background:rgba(16,33,51,0.92);border-radius:0 16px 16px 0;padding:2rem 2.2rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 2px 12px #0004;">
+        <h2 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.7rem 0;">Norway</h2>
+        <div style="color:#b6d6f2;font-size:1rem;margin-bottom:0.7rem;">Travel Dates: <strong>Aug 1–14, 2025</strong></div>
+        <p style="color:#e0cba8;font-size:1.08rem;">Experience the magic of Norway’s fjords, where dramatic cliffs plunge into crystal waters and Viking legends come alive. Cruise through UNESCO-listed landscapes, hike to breathtaking viewpoints, and savor fresh seafood in charming coastal villages. At night, watch the northern lights dance above snow-capped peaks. This is a journey for the adventurous soul!</p>
+      </div>
+    </div>
+    <!-- Sweden -->
+    <div style="display:flex;align-items:stretch;min-height:260px;margin-bottom:0.5rem;">
+      <div style="flex:1;background:url('{% static 'images/sweden.jpg' %}') center center/cover no-repeat;border-radius:16px 0 0 16px;min-width:220px;min-height:260px;"></div>
+      <div style="flex:2;background:rgba(16,33,51,0.92);border-radius:0 16px 16px 0;padding:2rem 2.2rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 2px 12px #0004;">
+        <h2 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.7rem 0;">Sweden</h2>
+        <div style="color:#b6d6f2;font-size:1rem;margin-bottom:0.7rem;">Travel Dates: <strong>Aug 15–28, 2025</strong></div>
+        <p style="color:#e0cba8;font-size:1.08rem;">Wander through Sweden’s endless forests and island-dotted archipelagos. Discover the vibrant culture of Stockholm, unwind with a traditional fika, and marvel at the midnight sun. From the world-famous Ice Hotel to wild moose safaris, every day is a new adventure. Sweden is where nature and modernity blend in perfect harmony.</p>
+      </div>
+    </div>
+    <!-- Denmark -->
+    <div style="display:flex;align-items:stretch;min-height:260px;margin-bottom:0.5rem;">
+      <div style="flex:1;background:url('{% static 'images/denmark.jpg' %}') center center/cover no-repeat;border-radius:16px 0 0 16px;min-width:220px;min-height:260px;"></div>
+      <div style="flex:2;background:rgba(16,33,51,0.92);border-radius:0 16px 16px 0;padding:2rem 2.2rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 2px 12px #0004;">
+        <h2 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.7rem 0;">Denmark</h2>
+        <div style="color:#b6d6f2;font-size:1rem;margin-bottom:0.7rem;">Travel Dates: <strong>Sep 1–14, 2025</strong></div>
+        <p style="color:#e0cba8;font-size:1.08rem;">Cycle along Denmark’s windswept coasts, explore ancient Viking castles, and indulge in Copenhagen’s world-class street food. Embrace the Danish concept of hygge as you relax in cozy cafés and stroll through colorful harbors. Denmark is a blend of history, design, and pure joy—perfect for curious travelers.</p>
+      </div>
+    </div>
+    <!-- Finland -->
+    <div style="display:flex;align-items:stretch;min-height:260px;margin-bottom:0.5rem;">
+      <div style="flex:1;background:url('{% static 'images/finland.jpg' %}') center center/cover no-repeat;border-radius:16px 0 0 16px;min-width:220px;min-height:260px;"></div>
+      <div style="flex:2;background:rgba(16,33,51,0.92);border-radius:0 16px 16px 0;padding:2rem 2.2rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 2px 12px #0004;">
+        <h2 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.7rem 0;">Finland</h2>
+        <div style="color:#b6d6f2;font-size:1rem;margin-bottom:0.7rem;">Travel Dates: <strong>Sep 15–28, 2025</strong></div>
+        <p style="color:#e0cba8;font-size:1.08rem;">Unwind in a lakeside sauna, meet reindeer in snowy Lapland, and chase the aurora borealis across the Arctic sky. Finland’s wild beauty is matched only by its warm hospitality. Savor fresh berries, paddle through pristine waters, and discover a land where nature is always close at hand.</p>
+      </div>
+    </div>
+    <!-- Iceland -->
+    <div style="display:flex;align-items:stretch;min-height:260px;margin-bottom:0.5rem;">
+      <div style="flex:1;background:url('{% static 'images/iceland.jpg' %}') center center/cover no-repeat;border-radius:16px 0 0 16px;min-width:220px;min-height:260px;"></div>
+      <div style="flex:2;background:rgba(16,33,51,0.92);border-radius:0 16px 16px 0;padding:2rem 2.2rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 2px 12px #0004;">
+        <h2 style="color:#e0cba8;font-family:'Cinzel Decorative',serif;margin:0 0 0.7rem 0;">Iceland</h2>
+        <div style="color:#b6d6f2;font-size:1rem;margin-bottom:0.7rem;">Travel Dates: <strong>Oct 1–14, 2025</strong></div>
+        <p style="color:#e0cba8;font-size:1.08rem;">Step into a world of fire and ice! Iceland’s geysers, volcanoes, and waterfalls create a landscape like no other. Soak in geothermal hot springs, trek across glaciers, and explore Reykjavik’s vibrant arts scene. Every moment in Iceland is a story waiting to be told.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Next Season Destinations -->
+  <hr style="margin:3rem 0 2rem 0;border:0;border-top:2px solid #2c3e50;">
+  <h2 style="text-align:center;color:#000;font-family:'Cinzel Decorative',serif;letter-spacing:1px;font-weight:700;margin-bottom:1.2rem;">Coming Soon: Next Season's Destinations</h2>
+  <p style="text-align:center;color:#fff;font-size:1.05rem;margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto;">
+  <span style="color:#000;">Each season, Nordic Trails curates a new set of countries to explore! Here’s a sneak peek at what’s coming next. Stay tuned for booking dates and new adventures.</span>
+  </p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2rem;">
+    <!-- Estonia -->
+    <div style="background:#1a2636;border-radius:12px;box-shadow:0 2px 12px #0004;padding:1.2rem;display:flex;flex-direction:column;align-items:center;opacity:0.7;">
+      <img src="{% static 'images/estonia.jpg' %}" alt="Estonia" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:10px 10px 0 0;filter:grayscale(0.2);box-shadow:0 2px 8px #0003;">
+  <h3 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;font-weight:700;margin:1rem 0 0.5rem 0;">Estonia</h3>
+      <div style="color:#fff;font-size:0.98rem;margin-bottom:0.7rem;">Coming Spring 2026</div>
+      <p style="color:#e0cba8;font-size:1.02rem;text-align:center;margin-bottom:0.7rem;">Wander the cobbled streets of Tallinn, where medieval towers meet modern cafés. Estonia’s forests and beaches are perfect for quiet escapes, while lively folk festivals bring the country’s traditions to life. A hidden gem for explorers who love both history and nature.</p>
+    </div>
+    <!-- Latvia -->
+    <div style="background:#1a2636;border-radius:12px;box-shadow:0 2px 12px #0004;padding:1.2rem;display:flex;flex-direction:column;align-items:center;opacity:0.7;">
+      <img src="{% static 'images/group1.jpeg' %}" alt="Latvia" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:10px 10px 0 0;filter:grayscale(0.2);box-shadow:0 2px 8px #0003;">
+  <h3 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;font-weight:700;margin:1rem 0 0.5rem 0;">Latvia</h3>
+      <div style="color:#fff;font-size:0.98rem;margin-bottom:0.7rem;">Coming Spring 2026</div>
+      <p style="color:#e0cba8;font-size:1.02rem;text-align:center;margin-bottom:0.7rem;">Latvia is a land of music, art, and wild beauty. Explore Riga’s stunning Art Nouveau architecture, paddle through the forests of Gauja National Park, and join in the joy of a traditional song festival. Latvia’s spirit is infectious—come ready to celebrate!</p>
+    </div>
+    <!-- Lithuania -->
+    <div style="background:#1a2636;border-radius:12px;box-shadow:0 2px 12px #0004;padding:1.2rem;display:flex;flex-direction:column;align-items:center;opacity:0.7;">
+      <img src="{% static 'images/group2.jpeg' %}" alt="Lithuania" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:10px 10px 0 0;filter:grayscale(0.2);box-shadow:0 2px 8px #0003;">
+  <h3 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;font-weight:700;margin:1rem 0 0.5rem 0;">Lithuania</h3>
+      <div style="color:#fff;font-size:0.98rem;margin-bottom:0.7rem;">Coming Spring 2026</div>
+      <p style="color:#e0cba8;font-size:1.02rem;text-align:center;margin-bottom:0.7rem;">Lithuania’s fairy-tale castles, rolling dunes, and vibrant folk art make every day an adventure. Stroll Vilnius’s old town, picnic by the lakes, and join in springtime festivals bursting with color and music. Lithuania is a place to make memories that last a lifetime.</p>
+    </div>
+    <!-- Poland -->
+    <div style="background:#1a2636;border-radius:12px;box-shadow:0 2px 12px #0004;padding:1.2rem;display:flex;flex-direction:column;align-items:center;opacity:0.7;">
+      <img src="{% static 'images/ski1.jpg' %}" alt="Poland" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:10px 10px 0 0;filter:grayscale(0.2);box-shadow:0 2px 8px #0003;">
+  <h3 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;font-weight:700;margin:1rem 0 0.5rem 0;">Poland</h3>
+      <div style="color:#fff;font-size:0.98rem;margin-bottom:0.7rem;">Coming Spring 2026</div>
+      <p style="color:#e0cba8;font-size:1.02rem;text-align:center;margin-bottom:0.7rem;">From Krakow’s fairy-tale castles to the wild Tatra mountains, Poland is a land of discovery. Wander through colorful spring flower festivals, explore ancient salt mines, and relax by the lakes. Poland’s rich history and natural beauty will surprise and delight you at every turn.</p>
+    </div>
+  </div>
+
+  <!-- Section 3: Past Seasons Highlights -->
+  <hr style="margin:3rem 0 2rem 0;border:0;border-top:2px solid #2c3e50;">
+  <h2 style="text-align:center;color:#000;font-family:'Cinzel Decorative',serif;letter-spacing:1px;font-weight:700;margin-bottom:1.2rem;">Past Seasons Highlights</h2>
+  <p style="text-align:center;color:#b6d6f2;font-size:1.05rem;margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto;">
+  <span style="color:#000;">Here are some memories from our previous adventures! Every year, our travelers experience new cultures, landscapes, and unforgettable moments.</span>
+  </p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2rem;">
+    <div style="background:#22304a;border-radius:12px;box-shadow:0 2px 12px #0004;padding:1.2rem;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/hike3.jpg' %}" alt="Aurora Adventure" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:10px 10px 0 0;box-shadow:0 2px 8px #0003;">
+  <h4 style="color:#58ccff;margin:1rem 0 0.5rem 0;font-family:'Cinzel Decorative',serif;font-weight:700;">Aurora Adventure</h4>
+      <p style="color:#b6d6f2;font-size:1rem;text-align:center;">Chasing the northern lights in Lapland, Finland – a magical winter journey!</p>
+    </div>
+    <div style="background:#22304a;border-radius:12px;box-shadow:0 2px 12px #0004;padding:1.2rem;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/kayak1.jpg' %}" alt="Baltic Summer" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:10px 10px 0 0;box-shadow:0 2px 8px #0003;">
+  <h4 style="color:#58ccff;margin:1rem 0 0.5rem 0;font-family:'Cinzel Decorative',serif;font-weight:700;">Baltic Summer</h4>
+      <p style="color:#b6d6f2;font-size:1rem;text-align:center;">Exploring the coasts of Estonia and Latvia, with bonfires and folk music on the beach.</p>
+    </div>
+    <div style="background:#22304a;border-radius:12px;box-shadow:0 2px 12px #0004;padding:1.2rem;display:flex;flex-direction:column;align-items:center;">
+      <img src="{% static 'images/meal5.jpg' %}" alt="Viking Spring" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:10px 10px 0 0;box-shadow:0 2px 8px #0003;">
+  <h4 style="color:#58ccff;margin:1rem 0 0.5rem 0;font-family:'Cinzel Decorative',serif;font-weight:700;">Viking Spring</h4>
+      <p style="color:#b6d6f2;font-size:1rem;text-align:center;">Sailing the fjords of Norway and learning Viking history with local guides.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

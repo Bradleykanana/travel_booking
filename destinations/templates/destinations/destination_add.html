@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Add Destination | Nordic Trails{% endblock %}
+{% block content %}
+<div class="container" style="max-width:600px;margin:auto;background:rgba(13,27,42,0.93);padding:2.5rem 2rem 2rem 2rem;border-radius:18px;box-shadow:0 0 24px #000a;margin-top:2.5rem;">
+  <a href="{% url 'destination_list' %}" class="btn-primary" style="background:#e0cba8;color:#0d1b2a;padding:0.5rem 1.2rem;border-radius:8px;font-weight:bold;text-decoration:none;box-shadow:0 2px 8px #0002;">&larr; Back to Destinations</a>
+  <h1 style="text-align:center;color:#58ccff;font-family:'Cinzel Decorative',serif;letter-spacing:1px;margin-top:1rem;">Add a New Destination</h1>
+  <form method="post" enctype="multipart/form-data" style="margin-top:2rem;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-primary" style="background:#38d6c4;color:#0d1b2a;padding:0.7rem 1.5rem;border-radius:8px;font-weight:bold;text-decoration:none;box-shadow:0 2px 8px #0002;margin-top:1rem;">Add Destination</button>
+  </form>
+</div>
+{% endblock %}
